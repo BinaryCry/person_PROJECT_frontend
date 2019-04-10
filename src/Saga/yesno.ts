@@ -12,11 +12,14 @@ function* fetchYesNoAPI() {
     const { status } = responseResult;
     if (status >= 400) {
       debugger;
-      yield put({ type: FETCH_YESNO_FAIL});
+      yield put({ type: FETCH_YESNO_FAIL });
     } else {
       yield put({
         type: FETCH_YESNO_SUCCESS,
-        data: { value: responseResult.data.answer, img: responseResult.data.image }
+        data: {
+          value: responseResult.data.answer,
+          img: responseResult.data.image
+        }
       });
     }
   }

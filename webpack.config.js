@@ -14,7 +14,8 @@ module.exports = env => {
     output: {
       filename: "app.js",
       path: resolve(__dirname, "build/"),
-      publicPath: "/"
+      publicPath: "/",
+      globalObject: 'this'
     },
     plugins: [
       ...envWP.plugins,
@@ -25,10 +26,11 @@ module.exports = env => {
     resolve: {
       extensions: [".ts", ".tsx", ".js", ".json", ".scss"],
       alias: {
-        components: resolve(__dirname, 'src/Components'),
-        containers: resolve(__dirname, 'src/Containers'),
-        actions: resolve(__dirname, 'src/Actions'),
-        store: resolve(__dirname, 'src/Store'),
+        components: resolve(__dirname, "src/Components"),
+        containers: resolve(__dirname, "src/Containers"),
+        selectors: resolve(__dirname, "src/Selectors"),
+        actions: resolve(__dirname, "src/Actions"),
+        store: resolve(__dirname, "src/Store")
       }
     },
     module: {

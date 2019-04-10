@@ -8,7 +8,8 @@ export interface IStore {
   yesno: {
     value: boolean,
     img: string
-  }
+  },
+  fibo: number
 }
 
 const sagaMiddleware = createSagaMiddleware();
