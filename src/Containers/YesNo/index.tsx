@@ -6,14 +6,11 @@ import { Dispatch } from "redux";
 import { createSelector } from "reselect";
 import { fiboCSelector } from "selectors";
 import { IStore } from "store";
-
-const fib = (n: number): number => {
-  return n <= 1 ? n : fib(n - 1) + fib(n - 2);
-};
+import { reqFib } from "../../Calcs/fibo";
 
 const fiboCountSqrSelector = createSelector(
   [fiboCSelector],
-  fiboCount => fib(fiboCount)
+  fiboCount => reqFib(fiboCount)
 );
 
 const mapStateToProps = (state: IStore) => ({
