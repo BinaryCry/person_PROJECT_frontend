@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["src/Components/*"],
+      "containers/*": ["src/Containers/*"],
+      "actions/*": ["src/Actions/*"],
+      "store": ["src/Store"],
+    },
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",

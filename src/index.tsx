@@ -1,9 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-
-import App from "./Components/App";
+import Routing from "./routing";
+import store from "./Store";
+import { Provider } from "react-redux";
 
 ReactDOM.render(
-    <App />
-  , document.getElementById("app")
+  <Provider store={store}>
+    <Routing />
+  </Provider>,
+  document.getElementById("app")
 );

@@ -11,7 +11,8 @@ module.exports.config = {
       "Access-Control-Allow-Origin": "*"
     },
     compress: true,
-    hot: true
+    hot: true,
+    historyApiFallback: true
   }
 };
 

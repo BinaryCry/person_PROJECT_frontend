@@ -23,7 +23,13 @@ module.exports = env => {
       })
     ],
     resolve: {
-      extensions: [".ts", ".tsx", ".js", ".json", ".scss"]
+      extensions: [".ts", ".tsx", ".js", ".json", ".scss"],
+      alias: {
+        components: resolve(__dirname, 'src/Components'),
+        containers: resolve(__dirname, 'src/Containers'),
+        actions: resolve(__dirname, 'src/Actions'),
+        store: resolve(__dirname, 'src/Store'),
+      }
     },
     module: {
       rules: [
