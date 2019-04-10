@@ -1,38 +1,30 @@
 import YesNo from "components/YesNo";
 import { connect } from "react-redux";
 import { fetchYesNo } from "actions/yesno";
+import { fiboStartCalc } from "actions/fibo";
 import { Dispatch } from "redux";
 import { createSelector } from "reselect";
-import { yesnoSelector, fiboSelector } from "selectors";
+import { fiboCSelector } from "selectors";
 import { IStore } from "store";
-import { fiboCalcHelper } from "../../helpers";
 
-const yesnoValueSelector = createSelector(
-  yesnoSelector,
-  yesno => yesno.value
-);
+const fib = (n: number): number => {
+  return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+};
 
-const yesnoImgSelector = createSelector(
-  yesnoSelector,
-  yesno => yesno.img
-);
-
-const fiboValueSelector = createSelector(
-  fiboSelector,
-  fibo => fibo
+const fiboCountSqrSelector = createSelector(
+  [fiboCSelector],
+  fiboCount => fib(fiboCount)
 );
 
 const mapStateToProps = (state: IStore) => ({
-  yesno: {
-    value: yesnoValueSelector(state),
-    img: yesnoImgSelector(state)
-  },
-  fibo: fiboValueSelector(state)
+  yesno: state.yesno,
+  fibo: state.fibo,
+  sqr: fiboCountSqrSelector(state)
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   fetchYesNo: () => dispatch(fetchYesNo()),
-  calcFibo: (n: number) => fiboCalcHelper(n)
+  fiboSetCount: (n: number) => dispatch(fiboStartCalc(n))
 });
 
 export default connect(

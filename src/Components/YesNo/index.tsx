@@ -5,8 +5,12 @@ class YesNo extends React.Component<
   {
     yesno: { value: boolean; img: string };
     fetchYesNo: Function;
-    calcFibo: Function;
-    fibo: number;
+    fiboSetCount: Function;
+    fibo: {
+      count: number;
+      result: number;
+    };
+    sqr: number;
   },
   { fiboCount: number }
 > {
@@ -15,11 +19,11 @@ class YesNo extends React.Component<
   };
 
   handleChange = (event: any) => {
-    this.setState({ fiboCount: event.target.value });
+    this.setState({ fiboCount: event.target.value});
   };
 
   render() {
-    const { yesno, fetchYesNo, calcFibo, fibo } = this.props;
+    const { yesno, fetchYesNo, fiboSetCount, fibo, sqr } = this.props;
     return (
       <div className={style.yn}>
         <button onClick={() => fetchYesNo()}>Yes/No?</button>
@@ -28,13 +32,16 @@ class YesNo extends React.Component<
         )}
         <br />
         {yesno.img && <img className={style.yni} src={yesno.img} />}
-        <button onClick={() => calcFibo(this.state.fiboCount)}>Fibo</button>
+        <button onClick={() => fiboSetCount(this.state.fiboCount)}>Fibo</button>
         <input
           type="number"
           onChange={this.handleChange}
           value={this.state.fiboCount}
         />
-        {fibo && <span className={style.fibo}>{fibo}</span>}
+        {fibo && <span className={style.fibo}>{fibo.result}</span>}
+        <br />
+        <br />
+        {sqr && <span className={style.fibo}>Sqr: {sqr}</span>}
       </div>
     );
   }

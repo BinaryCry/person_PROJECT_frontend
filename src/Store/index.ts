@@ -6,10 +6,13 @@ import rootSaga from "../Saga";
 
 export interface IStore {
   yesno: {
-    value: boolean,
-    img: string
-  },
-  fibo: number
+    value: boolean;
+    img: string;
+  };
+  fibo: {
+    count: number;
+    result: number;
+  };
 }
 
 const sagaMiddleware = createSagaMiddleware();

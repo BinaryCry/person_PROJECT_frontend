@@ -1,10 +1,14 @@
 import { createReducer } from "redux-create-reducer";
-import { FIBO_CALC_SUCCESS } from "../Constants/actionTypes";
+import { FIBO_CALC_SUCCESS, FIBO_SET_COUNT } from "../Constants/actionTypes";
 
-const initialState: number = null;
+const initialState: { count: number; result: number } = {
+  count: null,
+  result: null
+};
 
 const fibo = createReducer(initialState, {
-  [FIBO_CALC_SUCCESS]: (state, action) => action.data
+  [FIBO_SET_COUNT]: (state, action) => ({ ...state, count: parseInt(action.data) }),
+  [FIBO_CALC_SUCCESS]: (state, action) => ({ ...state, result: action.data })
 });
 
 export default fibo;
