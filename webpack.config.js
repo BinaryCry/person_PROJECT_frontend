@@ -10,7 +10,7 @@ module.exports = env => {
     stats: {
       errorDetails: true
     },
-    mode: env.NODE_ENV === "prod" ? "production" : "development",
+    mode: env.NODE_ENV || "development",
     entry: resolve(__dirname, "./src/index.tsx"),
     output: {
       filename: "app.js",
