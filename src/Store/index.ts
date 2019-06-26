@@ -3,16 +3,11 @@ import { composeWithDevTools } from "redux-devtools-extension/developmentOnly";
 import createSagaMiddleware from "redux-saga";
 import reducers from "../Reducers";
 import rootSaga from "../Saga";
+import { IYesNO, IFibo } from "./interface";
 
 export interface IStore {
-  yesno: {
-    value: boolean;
-    img: string;
-  };
-  fibo: {
-    count: number;
-    result: number;
-  };
+  yesno: IYesNO;
+  fibo: IFibo;
 }
 
 const sagaMiddleware = createSagaMiddleware();

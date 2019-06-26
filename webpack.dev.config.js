@@ -2,10 +2,9 @@ const resolve = require("path").resolve;
 const webpack = require("webpack");
 
 module.exports.config = {
-  watch: true,
   devtool: "source-map",
   devServer: {
-    port: 5000,
+    port: 4444,
     contentBase: resolve(__dirname, "assets"),
     headers: {
       "Access-Control-Allow-Origin": "*"

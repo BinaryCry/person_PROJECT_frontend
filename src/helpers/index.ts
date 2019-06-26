@@ -1,4 +1,7 @@
 import FiboWorker from "worker-loader!../Workers/fibo.worker.ts";
+
+// import FiboWorker from "worker-loader?publicPath=frontend/!../Workers/fibo.worker.ts";
+
 import store from "store";
 import { FIBO_CALC_SUCCESS } from "../Constants/actionTypes";
 

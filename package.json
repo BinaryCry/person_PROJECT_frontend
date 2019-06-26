@@ -5,7 +5,7 @@
   "main": "src/index.jsx",
   "scripts": {
     "start": "webpack-dev-server --env.NODE_ENV=dev",
-    "build": "webpack --env.NODE_ENV=prod ",
+    "build": "webpack --env.NODE_ENV=prod",
     "test": "jest"
   },
   "author": "",

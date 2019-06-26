@@ -5,6 +5,7 @@ module.exports = env => {
   const envWP = require(`./webpack.${env.NODE_ENV}.config.js`);
 
   return {
+    watch: true,
     ...envWP.config,
     stats: {
       errorDetails: true
@@ -15,12 +16,13 @@ module.exports = env => {
       filename: "app.js",
       path: resolve(__dirname, "build/"),
       publicPath: "/",
-      globalObject: 'this'
+      globalObject: "this"
     },
     plugins: [
       ...envWP.plugins,
       new HtmlWebpackPlugin({
-        template: resolve(__dirname, "./src/template.html")
+        template: resolve(__dirname, "./src/template.html"),
+        filename: "index.html"
       })
     ],
     resolve: {

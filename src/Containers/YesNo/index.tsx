@@ -16,7 +16,8 @@ const fiboCountSqrSelector = createSelector(
 const mapStateToProps = (state: IStore) => ({
   yesno: state.yesno,
   fibo: state.fibo,
-  sqr: fiboCountSqrSelector(state)
+  // sqr: fiboCountSqrSelector(state),
+  isReselectionOn: false
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
