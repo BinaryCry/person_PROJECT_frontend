@@ -5,7 +5,6 @@ module.exports = env => {
   const envWP = require(`./webpack.${env.NODE_ENV}.config.js`);
 
   return {
-    watch: true,
     ...envWP.config,
     stats: {
       errorDetails: true

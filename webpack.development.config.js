@@ -2,6 +2,7 @@ const resolve = require("path").resolve;
 const webpack = require("webpack");
 
 module.exports.config = {
+  watch: true,
   devtool: "source-map",
   devServer: {
     port: 4444,
