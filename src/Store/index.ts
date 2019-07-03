@@ -8,6 +8,7 @@ import { IYesNO, IFibo } from "./interface";
 export interface IStore {
   yesno: IYesNO;
   fibo: IFibo;
+  uploadedFiles: string[];
 }
 
 const sagaMiddleware = createSagaMiddleware();

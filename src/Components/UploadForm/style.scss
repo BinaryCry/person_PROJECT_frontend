@@ -1,0 +1,38 @@
+.preview {
+  width: 200px;
+}
+
+.uploadForm {
+  margin-bottom: 10px;
+}
+
+.previewText {
+  font-size: .875em;
+  color: #ccc;
+  padding-left: 1em;
+}
+
+.fileList {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #656565;
+  display: flex;
+  margin-bottom: 1em;
+  width: 250px;
+  flex-direction: column;
+
+  &Top {
+    border-bottom: 1px solid #555;
+    color: #555;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
+  }
+
+  &Item {
+    margin: 5px 0;
+    color: #656565;
+    letter-spacing: .5px;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+}

@@ -12,7 +12,10 @@ module.exports.config = {
     },
     compress: true,
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/api': 'http://localhost/'
+    }
   }
 };
 

@@ -1,13 +1,18 @@
 import * as React from "react";
+import { IProps, IState } from "./interface";
+import UploadForm from "containers/UploadForm";
 
-interface IProps {}
+export default class ComponentName extends React.Component<IProps, IState> {
+  state = {};
 
-interface IState {}
+  componentDidMount() {}
 
-class Index extends React.Component<IProps, IState> {
   render() {
-    return <div>Index-page content is here</div>;
+    return (
+      <div>
+        <p>Index page</p>
+        <UploadForm />
+      </div>
+    );
   }
 }
-
-export default Index;
