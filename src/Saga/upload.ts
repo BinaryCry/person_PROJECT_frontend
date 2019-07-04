@@ -9,6 +9,7 @@ import {
   UPLOAD_FILE_FAIL
 } from "../Constants/actionTypes";
 import { AxiosResponse } from "axios";
+import { AnyAction } from "redux";
 
 function* g_fetchUploadedFiles() {
   const res: AxiosResponse = yield fetchUploadedFiles();
@@ -25,6 +26,20 @@ function* g_fetchUploadedFiles() {
   }
 }
 
+function* g_uploadFile(action: AnyAction) {
+  const res = yield uploadFile(action.formData);
+  if (res) {
+    if (res.status !== 201) {
+      yield put({ type: UPLOAD_FILE_FAIL, res });
+      console.log(res.status, res.statusText);
+    } else {
+      yield put({ type: UPLOAD_FILE_SUCCESS });
+      yield put({ type: FETCH_UPLOADED_FILES });
+    }
+  }
+}
+
 export default function*() {
   yield takeEvery(FETCH_UPLOADED_FILES, g_fetchUploadedFiles);
+  yield takeEvery(UPLOAD_FILE, g_uploadFile);
 }

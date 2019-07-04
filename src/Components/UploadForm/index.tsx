@@ -6,6 +6,9 @@ export default class UploadForm extends React.Component<IProps, IState> {
   imgPreviewElement: React.RefObject<HTMLImageElement> = React.createRef<
     HTMLImageElement
   >();
+  inputImage: React.RefObject<HTMLInputElement> = React.createRef<
+    HTMLInputElement
+  >();
 
   constructor(props: IProps) {
     super(props);
@@ -21,7 +24,6 @@ export default class UploadForm extends React.Component<IProps, IState> {
   }
 
   private _fileInputHandler(e: React.ChangeEvent<HTMLInputElement>) {
-    console.log(e.target.files);
     if (
       e.target.files &&
       e.target.files[0] &&
@@ -40,6 +42,20 @@ export default class UploadForm extends React.Component<IProps, IState> {
 
   private _formSubmitHandler(e: React.FormEvent) {
     e.preventDefault();
+    if (this.state.isPreviewVisible) {
+      const fileName = this.inputImage.current.files[0].name.slice(
+        0,
+        this.inputImage.current.files[0].name.lastIndexOf(".")
+      );
+      const formData = new FormData();
+      formData.append(
+        fileName,
+        this.inputImage.current.files[0]
+      );
+      this.props.uploadFile(formData);
+      this.inputImage.current.value = "";
+      this.setState({ isPreviewVisible: false });
+    }
   }
 
   render() {
@@ -50,12 +66,18 @@ export default class UploadForm extends React.Component<IProps, IState> {
           <div className={style.fileList}>
             <div className={style.fileListTop}>Files:</div>
             {uploadedFiles.map((fileName: string, index: number) => (
-              <div className={style.fileListItem} key={index + "_" + fileName}>> {fileName}</div>
+              <div className={style.fileListItem} key={index + "_" + fileName}>
+                > {fileName}
+              </div>
             ))}
           </div>
         )}
         <form className={style.uploadForm} onSubmit={this._formSubmitHandler}>
-          <input onChange={this._fileInputHandler} type="file" />
+          <input
+            ref={this.inputImage}
+            onChange={this._fileInputHandler}
+            type="file"
+          />
           <button type="submit">Upload</button>
         </form>
         {this.state.isPreviewVisible ? (
