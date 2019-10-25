@@ -31,7 +31,7 @@ export default class UploadForm extends React.Component<IProps, IState> {
     ) {
       const reader: FileReader = new FileReader();
       reader.readAsDataURL(e.target.files[0]);
-      reader.onload = (e: ProgressEvent & { target: { result: string } }) => {
+      reader.onload = (e: ProgressEvent<EventTarget & { result: any }>) => {
         this.imgPreviewElement.current.setAttribute("src", e.target.result);
       };
       this.setState({ isPreviewVisible: true });
@@ -48,10 +48,7 @@ export default class UploadForm extends React.Component<IProps, IState> {
         this.inputImage.current.files[0].name.lastIndexOf(".")
       );
       const formData = new FormData();
-      formData.append(
-        fileName,
-        this.inputImage.current.files[0]
-      );
+      formData.append(fileName, this.inputImage.current.files[0]);
       this.props.uploadFile(formData);
       this.inputImage.current.value = "";
       this.setState({ isPreviewVisible: false });
